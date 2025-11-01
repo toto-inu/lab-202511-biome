@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(bun create:*)"
+      "Bash(bun create:*)",
+      "Bash(bunx create-next-app@latest:*)",
+      "Bash(yes:*)",
+      "Bash(bunx:*)"
     ],
     "deny": [],
     "ask": []
