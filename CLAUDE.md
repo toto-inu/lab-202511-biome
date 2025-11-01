@@ -11,8 +11,62 @@ This is a research/laboratory repository for comparing ESLint/Prettier with Biom
 - `documents/` - Contains Japanese documentation outlining the research plan
   - `001_進行.md` - Main progress/planning document with numbered research steps
   - `901_参考リンク.md` - Reference links (Biome official docs)
-- `next_biome/` - Empty directory (likely for Next.js project with Biome)
-- `next_eslint/` - Empty directory (likely for Next.js project with ESLint/Prettier)
+- `next_biome/` - Next.js 16 project configured with Biome
+- `next_eslint/` - Next.js 16 project configured with ESLint/Prettier
+
+## Project Configurations
+
+### next_eslint (ESLint/Prettier Baseline)
+
+**Key Configuration Files:**
+- `eslint.config.mjs` - ESLint flat config using `eslint-config-next` (both core-web-vitals and typescript presets)
+- `.prettierrc` - Prettier config with 4-space indentation, semicolons, double quotes, and ES5 trailing commas
+- `package.json` - Scripts include `lint` (runs eslint) and `format` (runs prettier --write)
+
+**Development Commands:**
+```bash
+cd next_eslint
+npm run dev      # Start dev server on http://localhost:3000
+npm run build    # Build for production
+npm run lint     # Run ESLint
+npm run format   # Format with Prettier
+```
+
+### next_biome (Biome Configuration)
+
+**Key Configuration Files:**
+- `biome.json` - Biome config with VCS integration, 2-space indentation, recommended React/Next.js rules, and import organization
+- `package.json` - Scripts include `lint` (runs biome check) and `format` (runs biome format --write)
+
+**Development Commands:**
+```bash
+cd next_biome
+npm run dev      # Start dev server on http://localhost:3000
+npm run build    # Build for production
+npm run lint     # Run Biome check (lint + format check)
+npm run format   # Format with Biome
+```
+
+**Notable Biome Configuration:**
+- VCS integration enabled with git ignore file support
+- React and Next.js domains set to "recommended"
+- Auto-organize imports enabled
+- `noUnknownAtRules` disabled for CSS compatibility
+
+## Configuration Comparison
+
+### Formatting Differences
+- **Indentation:** ESLint project uses 4 spaces (Prettier), Biome project uses 2 spaces
+- **Quote Style:** ESLint project uses double quotes (Prettier), Biome uses default (double quotes)
+- **Trailing Commas:** ESLint project uses ES5 (Prettier), Biome uses default
+
+### Linting Approach
+- **ESLint:** Uses Next.js's curated rule sets (core-web-vitals + typescript)
+- **Biome:** Uses Biome's recommended rules + React/Next.js domain-specific rules
+
+### Tooling Philosophy
+- **ESLint/Prettier:** Two-tool approach (separate linter and formatter)
+- **Biome:** Unified tool for both linting and formatting
 
 ## Research Plan Overview
 
@@ -28,18 +82,9 @@ The research plan (documents/001_進行.md) follows these phases:
 8. **CI integration** - Set up GitHub Actions for format/lint checks
 9. **Documentation review** - Review VCS integration, migration guides, and Next.js-specific considerations
 
-## Working with this Repository
-
-When asked to set up or create projects in this repository:
-
-- `next_biome/` should contain a Next.js project configured with Biome
-- `next_eslint/` should contain a Next.js project configured with ESLint/Prettier
-- Both directories will likely be created via `npx create-next-app@latest` or similar commands
-- Pay attention to biome.json, .eslintrc, .prettierrc configuration files when they are created
-
 ## Language Note
 
-Documentation is in Japanese. When working with this repository, be prepared to:
-- Read and understand Japanese documentation
+Documentation is in Japanese. When working with this repository:
+- Read and understand Japanese documentation in `documents/`
 - Create or modify Japanese documentation if requested
 - Keep consistent with the existing documentation language

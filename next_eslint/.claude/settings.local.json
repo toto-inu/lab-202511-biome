@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/totoinu/worker/stellar/tech/202511/lab-202511-biome/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
